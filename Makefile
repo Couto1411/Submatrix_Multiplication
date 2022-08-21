@@ -1,4 +1,4 @@
-CXX      := -gcc
+CXX      := -g++
 CXXFLAGS := -Wall -Wextra -Werror
 LDFLAGS  := -lstdc++ -lm
 BUILD    := ./build
@@ -6,13 +6,13 @@ OBJ_DIR  := $(BUILD)/objects
 APP_DIR  := $(BUILD)/
 TARGET   := app
 INCLUDE  := -Iinclude/
-SRC      :=  $(wildcard src/*.c)
+SRC      :=  $(wildcard src/*.cpp)
 
-OBJECTS := $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJECTS := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 all: build $(APP_DIR)/$(TARGET)
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -g -o $@ -c $<
 
