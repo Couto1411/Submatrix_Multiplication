@@ -17,7 +17,7 @@ struct Table {
 };
 
 void printHash(Table* t);
-Table* criaHash(int tam);
+void criaHash(Table** t,int tam);
 void insertHash(Table* t, int **multiplicacao, int *coords);
 void removeHash(Table* t, int *coords);
 Entry* searchHash(Table* t, int *coords);

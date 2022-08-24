@@ -1,16 +1,11 @@
 #include "hash.hpp"
 
-Table* criaHash(int tam){
-    Table* t = new Table;
-    if (t == nullptr)
-    {
-        return nullptr;
-    }
-    t->quantidade = 0;
-	t->collisions =0;
-    t->tamanho = proxPrimo(2*tam);
-    t->table = new Entry*[t->tamanho];
-    return t;
+void criaHash(Table** t,int tam){
+	(*t) = new Table;
+    (*t)->quantidade = 0;
+	(*t)->collisions =0;
+    (*t)->tamanho = proxPrimo(2*tam);
+    (*t)->table = new Entry*[(*t)->tamanho];
 }
 
 void insertHash(Table* t, int **multiplicacao, int *coords){
@@ -29,12 +24,8 @@ void insertHash(Table* t, int **multiplicacao, int *coords){
 		t->collisions+=1;
 	}
 	if ((float)t->quantidade / t->tamanho >= 1){
-		Table* nova = new Table;
-		nova->quantidade = 0;
-		nova->collisions =0;
-		nova->tamanho = proxPrimo(2*t->tamanho);
-		nova->table = new Entry*[nova->tamanho];
-		printHash(nova);
+		Table* nova;
+		criaHash(&nova,t->tamanho);
 		for (int i = 0; i < t->tamanho; i++)
 		{
 			if (t->table[i]!=nullptr){

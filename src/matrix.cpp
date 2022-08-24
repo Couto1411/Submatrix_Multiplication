@@ -6,7 +6,7 @@ int **readMatrix(int coords[4]){
     int** intMatrix = new int*[rows];
     for (int i = 0; i < rows; i++)
         intMatrix[i] = new int[cols];
-    for (i = 0; i < coords[1]; i++) {
+    for (i = 0; i < coords[0]; i++) {
         sample.std::istream::ignore(20000000, '\n');
     }
     for (i = 0; i < rows; i++) {
@@ -21,24 +21,6 @@ int **readMatrix(int coords[4]){
     sample.close();
     return intMatrix;
 }
-
-// int** mulMat(int **mat, int coords[4]) {
-//     int rows = coords[2]-coords[0]+1, cols = coords[3]-coords[1]+1;
-//     int** rslt = new int*[rows];
-//     for (int i = 0; i < rows; ++i)
-//         rslt[i] = new int[cols];
- 
-//     for (int i = 0; i < rows; i++) {
-//         for (int j = 0; j < cols; j++) {
-//             rslt[i][j] = 0;
- 
-//             for (int k = 0; k < rows; k++) {
-//                 rslt[i][j] += mat[i][k] * mat[k][j];
-//             }
-//         }
-//     }
-//     return rslt;
-// }
 
 int** mulMat(int **matA, int **matB, int coords[4]) {
     int R1 = coords[2]-coords[0]+1, R2 = coords[3]-coords[1]+1, C2=R1;

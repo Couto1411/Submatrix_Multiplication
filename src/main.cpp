@@ -3,7 +3,7 @@
 int main(){
 	Table *hash;
 	Entry *existente;
-	hash=criaHash(1);
+	criaHash(&hash,1);
 	int** Matriz, **Transposta;
 	int *coordenadas;
 	coordenadas = new int[4];
@@ -30,7 +30,7 @@ int main(){
 	coordenadas[0]=0;
 	coordenadas[1]=0;
 	coordenadas[2]=4;
-	coordenadas[3]=5;
+	coordenadas[3]=4;
 	Matriz=readMatrix(coordenadas);
 	Transposta=transpose(Matriz,coordenadas);
 	existente=searchHash(hash,coordenadas);
