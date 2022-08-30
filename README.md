@@ -24,6 +24,7 @@ Recebe um objeto da hash e utiliza as coordenadas presentes nele para printar a 
     4 - Repete a busca e inserção n vezes.
 
 Obs.:      
+- O array de coordenadas tem a seguinte forma {pos1<sub>i</sub>,pos1<sub>j</sub>,pos2<sub>i</sub>,pos2<sub>j</sub>}      
 - O programa não aceita entrada de usuários, ele utiliza coordenadas estáticas já implementadas, caso seja necessário deve-se criar um input para as mesmas;      
 - O método de hash do repositório citado foi modificado para calcular a chave a partir das coordenas da matriz;    
 - Assim como a busca foi modificada para achar um resultado já calculado a partir da chave e das coordenadas;    
@@ -37,8 +38,8 @@ Obs.:
 - a<sub>n</sub> sendo um inteiro qualquer.
 
 # Exemplo de execução
-O main do programa está implementado para inserir 3 valores na Hash, printar a Hash após iserção, buscar um número que existe, inserir mais um números, printar a Hash.    
-Valores inseridos:
+O main do programa está implementado para inserir 3 valores na Hash, printar a Hash após iserção, buscar um número que existe, inserir mais um números, printar a Hash. O arquivo das matrizes está preenchido com uma matrix 1000x1000
+Coordenadas inseridas:
 
 > {0,0,3,4}     
 > {1,1,5,5}     
