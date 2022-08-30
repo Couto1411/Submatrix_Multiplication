@@ -48,10 +48,7 @@ Valores inseridos:
 Execução:
 </p>
 <p align="center">
-	<img src="imgs/exec.jpg"/> 
-</p>    
-<p align="center">
-	<img src="imgs/exec2.jpg"/> 
+	<img src="imgs/Exec.jpg"/>
 </p>   
 
 # Compilação e Execução
