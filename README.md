@@ -40,10 +40,10 @@ Obs.:
 O main do programa está implementado para inserir 3 valores na Hash, printar a Hash após iserção, buscar um número que existe, inserir mais um números, printar a Hash.    
 Valores inseridos:
 
-> {0,0,3,4}
-> {1,1,5,5}
-> {1,1,4,7}
-> {1,1,5,5}
+> {0,0,3,4}     
+> {1,1,5,5}     
+> {1,1,4,7}     
+> {1,1,5,5}     
 
 Execução:
 </p>
