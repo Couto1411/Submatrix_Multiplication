@@ -10,23 +10,16 @@ int **readMatrix(int coords[4]){
     for (i = 0; i < coords[0]; i++) {
         sample.std::istream::ignore(40000000, '\n');
     }
-    for (int i = coords[0]; i < (coords[2]); i++)
-    {
-        for (int j = coords[1]; j < (coords[3]); j++)
-            printf("%d,%d ",i,j);
-        printf("\n");
-    }
     for (i = 0; i < rows; i++) {
         for (j = 0; j < coords[1]; j++) {
             sample >> temp;
         }
-        for (j = 0; j < cols; j++) {
+        for (j = 0; j < cols; j++)
             sample >> intMatrix[i][j];
-            printf("%d\n",intMatrix[i][j]);
-        }
         sample.std::istream::ignore(40000000, '\n');
     }
     sample.close();
+    coords[0]--;coords[2]--;
     return intMatrix;
 }
 
@@ -64,4 +57,5 @@ void printMatrix(Entry *mat){
             printf("%d ",mat->value[i][j]);
         printf("\n");        
     }
+    printf("\n");
 }

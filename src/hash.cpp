@@ -114,7 +114,7 @@ void printHash(Table* t){
 			}
 		}
 	}
-	printf("Houveram %d colisoes.\n", t->collisions);
+	printf("Houveram %d colisoes.\n\n", t->collisions);
 }
 
 bool ePrimo(int n){

@@ -6,50 +6,51 @@ int main(){
 	criaHash(&hash,1);
 	int** Matriz, **Transposta;
 	int *coordenadas;
-	coordenadas = new int[4];
-	coordenadas[0]=0;
-	coordenadas[1]=0;
-	coordenadas[2]=3;
-	coordenadas[3]=4;
+
+	// Insere um termo
+	coordenadas = new int[4]{0,0,3,4};
 	Matriz=readMatrix(coordenadas);
 	Transposta=transpose(Matriz,coordenadas);
 	insertHash(hash, mulMat(Matriz,Transposta,coordenadas),coordenadas);
-	coordenadas[0]=1;
-	coordenadas[1]=1;
-	coordenadas[2]=5;
-	coordenadas[3]=5;
-	Matriz=readMatrix(coordenadas);
-	Transposta=transpose(Matriz,coordenadas);
+
+	// Insere segundo termo
+	coordenadas = new int[4]{1,1,5,5};
 	existente=searchHash(hash,coordenadas);
-	if(existente==nullptr)
+	// Caso seja encontrado mostra o resultado já feito
+	if(existente==nullptr){
+		Matriz=readMatrix(coordenadas);
+		Transposta=transpose(Matriz,coordenadas);
 		insertHash(hash, mulMat(Matriz,Transposta,coordenadas),coordenadas);
+	}
 	else{
 		printf("Multiplicação já inserida, resultado:\n");
 		printMatrix(existente);
 	}
-	coordenadas[0]=1;
-	coordenadas[1]=1;
-	coordenadas[2]=4;
-	coordenadas[3]=7;
-	Matriz=readMatrix(coordenadas);
-	Transposta=transpose(Matriz,coordenadas);
+
+	// Insere terceiro termo
+	coordenadas = new int[4]{1,1,4,7};
 	existente=searchHash(hash,coordenadas);
-	if(existente==nullptr)
+	// Caso seja encontrado mostra o resultado já feito
+	if(existente==nullptr){
+		Matriz=readMatrix(coordenadas);
+		Transposta=transpose(Matriz,coordenadas);
 		insertHash(hash, mulMat(Matriz,Transposta,coordenadas),coordenadas);
+	}
 	else{
 		printf("Multiplicação já inserida, resultado:\n");
 		printMatrix(existente);
 	}
 	printHash(hash);
-	coordenadas[0]=3;
-	coordenadas[1]=3;
-	coordenadas[2]=5;
-	coordenadas[3]=5;
-	Matriz=readMatrix(coordenadas);
-	Transposta=transpose(Matriz,coordenadas);
+
+	// Insere quarto termo
+	coordenadas = new int[4]{1,1,5,5};
 	existente=searchHash(hash,coordenadas);
-	if(existente==nullptr)
+	// Caso seja encontrado mostra o resultado já feito
+	if(existente==nullptr){
+		Matriz=readMatrix(coordenadas);
+		Transposta=transpose(Matriz,coordenadas);
 		insertHash(hash, mulMat(Matriz,Transposta,coordenadas),coordenadas);
+	}
 	else{
 		printf("Multiplicação já inserida, resultado:\n");
 		printMatrix(existente);
