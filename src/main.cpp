@@ -9,8 +9,8 @@ int main(){
 	coordenadas = new int[4];
 	coordenadas[0]=0;
 	coordenadas[1]=0;
-	coordenadas[2]=4;
-	coordenadas[3]=5;
+	coordenadas[2]=3;
+	coordenadas[3]=4;
 	Matriz=readMatrix(coordenadas);
 	Transposta=transpose(Matriz,coordenadas);
 	insertHash(hash, mulMat(Matriz,Transposta,coordenadas),coordenadas);
@@ -27,10 +27,10 @@ int main(){
 		printf("Multiplicação já inserida, resultado:\n");
 		printMatrix(existente);
 	}
-	coordenadas[0]=0;
-	coordenadas[1]=0;
+	coordenadas[0]=1;
+	coordenadas[1]=1;
 	coordenadas[2]=4;
-	coordenadas[3]=4;
+	coordenadas[3]=7;
 	Matriz=readMatrix(coordenadas);
 	Transposta=transpose(Matriz,coordenadas);
 	existente=searchHash(hash,coordenadas);

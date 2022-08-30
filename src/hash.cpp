@@ -6,6 +6,9 @@ void criaHash(Table** t,int tam){
 	(*t)->collisions =0;
     (*t)->tamanho = proxPrimo(2*tam);
     (*t)->table = new Entry*[(*t)->tamanho];
+	for (int i = 0; i < (*t)->tamanho; i++)
+		(*t)->table[i]= nullptr;
+	
 }
 
 void insertHash(Table* t, int **multiplicacao, int *coords){
@@ -34,8 +37,9 @@ void insertHash(Table* t, int **multiplicacao, int *coords){
 		}
 		t->table=nova->table;
 		t->quantidade=nova->quantidade;
-		t->collisions=nova->collisions;
+		t->collisions+=nova->collisions;
 		t->tamanho=nova->tamanho;
+		free(nova);
 		insertHash(t,multiplicacao,coords);
 	}
 	else{
