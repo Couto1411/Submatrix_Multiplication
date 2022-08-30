@@ -1,37 +1,49 @@
-# Double_open_Hash
-O objetivo do problema é implementar uma Hash dupla aberta que contenha as funções de insert, search e remove, assim como contando as colisões que ocorrerem.       
+# Submatrix_Multiplication
+O objetivo do problema é implementar um uma multiplicação entre uma submatriz lida de um arquivo e sua matriz transposta. Além de inserir o resultado em uma hash, e caso tal matriz seja pesquisada novamente, restornar o resultado já inserido.
 # Estrutura
-Temos uma estrutura baseada de [HashTable](https://github.com/mpiress/HashTable), porém diferentemente do exemplo dado, ao ocorrer uma colisão existe um segundo algoritmo para gerar uma nova chave, caso ambas estejam sendo utilizadas, ele percorre a Hash até achar uma chave vazia, caso a Hash esteja completa deve-se duplicar o tamanho atual e setar o próximo primo como tamanho da Hash.
+Temos uma estrutura baseada de [Open_Hash](https://github.com/Couto1411/Open_Hash), contendo os devidos ajustes para comportar em cada objeto da hash, uma matriz e suas coordenadas do arquivo. (Portanto apenas os métodos relacionados à matriz serão abordados)
 # Logica
 
-O programa possui alguns métodos importantes: *criaHash()*, *insertHash()*, *printHash()*, *searchHash()* e *removeHash()*.
-1) criaHash(int tam):      
-Este método é responsável por inicializar uma tabela de objetos Entry, setando atributos como *t->quantidade* e *t->collisions* como 0, dizendo que a tabela está vazia, e setando tamanho da tabela como o próximo primo do dobro de um número informado, assim como alocando essa quantidade de memória para a tabela.
+O programa possui alguns métodos importantes: *readMatrix()*, *mulMat()*, *transpose()* e *printMatrix()*.
+1) int **readMatrix(int coords[4]):      
+Este método é responsável por ler de um arquivo nomeado "matriz.txt" contido na pasta "arquivos". Ele utiliza de um lógica que pula uma quantidade de linhas e colunas utilizando a função *.ignore()* da biblioteca <fstream>, quantidade determinada pelas coordenadas presentes no array encaminhado. Após encontrar o início da submatriz, o programa lê a quantidade de colunas definidas pelas coordenadas recebidas e pula o resto da linha e as colunas da próxima linha até encontrar a coluna inicial da matriz novamente.
 
-2) insertHash(Table* t, int valor):      
-O método percorre a lista de inteiros passada calculando uma chave (*valor % t->tamanho*) para o valor informado, caso a tabela na posição desta chave esteja preenchida, será realizado uma segunda operação de cálculo ((valor\*index+t->tamanho)%t->tamanho), caso este valor também esteja preenchido, a tabela será percorrida até achar um valor nulo, e a cada ciclo realizado há uma colisão, portanto adiciona-se 1 ao atributo *t->collisions* para que seja possível exibir a quantidade de colisões que houveram. Caso a tabela esteja cheia, será feito um re-hash para atualizar o valor do tamanho e inserir mais valores.
+2) int** mulMat(int **matA, int **matB, int coords[4]):      
+Programa baseado de [Program to multiply two matrices](https://www.geeksforgeeks.org/c-program-multiply-two-matrices/), o programa possui três algoritmos, um para matrizes retangulares e quadradas e um para cada uma dessas separado. Como é possível obter ambos os tipos de matrizes, foi-se utilizado o primeiro algoritmo.
 
-3) printHash(Table* t):       
-Printa o tamanho da Hash, percorre a Hash recebida printando os objetos(chave e valor) aonde existe valor, e no final printar o número de colisões ocorridas.
+3) int** transpose(int **A,int coords[4]):       
+Programa baseado de [Program to find transpose of a matrix](https://www.geeksforgeeks.org/program-to-find-transpose-of-a-matrix/), o programa possui três algoritmos, um que transpõe a matriz nela mesma, ou seja, "perdendo" a matriz original, e dois que armazenam em uma nova variável. Como necessitamos da matriz original para a multiplicação, foi-se ultilizado um dos que armazenam em uma nova variável..
 
-4) searchHash(Table* t, int valor):       
-Calcula uma chave (*valor % t->tamanho*) para o valor recebido e verifica se a tabela nessa posição possui valor igual ao recebido, se não realiza o mesmo calculo de *insertHash()* e verifica novamente, se não encontrar percorre a Hash até encontrá-lo ou caso faça dois ciclos retorna um valor nulo.
+4) void printMatrix(Entry *mat):       
+Recebe um objeto da hash e utiliza as coordenadas presentes nele para printar a matriz também presente no mesmo. (Utilizado principalmente para printar o resultado de uma matriz já existente)
 
-6) removeHash(Table* t, int valor):       
-Realiza uma busca semelhante à *buscaHash()* e caso encontre remove o número da lista de inteiros do objeto aonde a chave bateu, assim como diminui o número de colisões que foram necessárias para encontrar esse valor.
+- O main funciona da seguinte forma:     
+    1 - Cria uma hash de tamanho 1;      
+    2 - Seta as coordenadas da primeira matriz, lê a mesma, calcula a tranposta e insere a multiplicação;     
+    3 - A partir do segundo conjunto de coordenadas, primeiro é pesquisado esse conjunto na hash. Caso o resultado seja nulo, repete os passos de (2), caso não seja utiliza o retorno da busca para printar o resultado já calculado;    
+    4 - Repete a busca e inserção n vezes.
 
 Obs.:      
-- O programa não aceita entrada de usuários, ele utiliza um array estático de inteiros implementado, caso seja necessário deve-se criar um input para o array.
+- O programa não aceita entrada de usuários, ele utiliza coordenadas estáticas já implementadas, caso seja necessário deve-se criar um input para as mesmas;      
+- O método de hash do repositório citado foi modificado para calcular a chave a partir das coordenas da matriz;    
+- Assim como a busca foi modificada para achar um resultado já calculado a partir da chave e das coordenadas;    
+- Arquivo de formato:
+
+> a<sub>1</sub> a<sub>4</sub> a<sub>7</sub> ...    
+> a<sub>2</sub> a<sub>5</sub> a<sub>8</sub> ...    
+> a<sub>3</sub> a<sub>6</sub> a<sub>9</sub> ...    
+> ... ... ... ...  
+
+- a<sub>n</sub> sendo um inteiro qualquer.
 
 # Exemplo de execução
-O main do programa está implementado para inserir o vetor na Hash, printar a Hash após iserção, buscar um número que existe, remover um número, printar após remoção, remover um número não existente, inserir uma quantidade de números que ultrapassa o limite da Hash, printar a rash adaptada a uma nova quantidade.      
-Vetor:
+O main do programa está implementado para inserir 3 valores na Hash, printar a Hash após iserção, buscar um número que existe, inserir mais um números, printar a Hash.    
+Valores inseridos:
 
-> {1378, 3012, 600, 4700, 918, 175, 2051, 3653, 4558, 1210, 1468, 2724, 1055, 2143, 1136, 546, 3350, 1610, 3412, 1096}
-
-Novos valores:
-
-> {4558, 4559, 4560, 4561, 4562, 4551}
+> {0,0,3,4}
+> {1,1,5,5}
+> {1,1,4,7}
+> {1,1,5,5}
 
 Execução:
 </p>
@@ -41,10 +53,6 @@ Execução:
 <p align="center">
 	<img src="imgs/exec2.jpg"/> 
 </p>   
-
-# Conclusão
-
-Ao compararmos a estrutura a uma semelhante porém fechada, notamos que existem mais colisões na hora de inserção, porém, a busca é mais rápida já que sabemos exatamente o caminho que devemos percorrer para encontrar o valor, portanto o custo é linear. Ou seja, perde-se na inserção porém ganha-se na busca.
 
 # Compilação e Execução
 
